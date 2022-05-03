@@ -152,6 +152,12 @@ class ACEDataset(Dataset):
                 label_list = ['PART-OF', 'USED-FOR', 'FEATURE-OF',  'EVALUATE-FOR', 'HYPONYM-OF']
                 self.sym_labels = ['NIL', 'CONJUNCTION', 'COMPARE']
                 self.label_list = self.sym_labels + label_list
+                
+        elif args.data_dir.find('radgraph')!=-1:
+            self.ner_label_list = ['NIL', 'ANAT-DP','OBS-DP','OBS-U','OBS-DA', 'CHAN-NC', 'CHAN-IMP', 'CHAN-WOR', 'CHAN-AP', 'CHAN-DISA', 'CHAN-DISP']
+            label_list = ['suggestive_of','located_at', 'modify']
+            self.sym_labels = ['NIL']
+            self.label_list = self.sym_labels + label_list
 
         else:
             assert (False)  
@@ -1182,6 +1188,9 @@ def main():
             num_labels = 8 + 8 - 1
         else:
             num_labels = 8 + 8 - 3
+    elif args.data_dir.find('radgraph')!=-1:
+        num_ner_labels = 11
+        num_labels = 4 + 4 - 1
     else:
         assert (False)
 

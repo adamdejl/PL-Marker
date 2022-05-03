@@ -113,6 +113,8 @@ class ACEDatasetNER(Dataset):
             self.ner_label_list = ['NIL', 'FAC', 'WEA', 'LOC', 'VEH', 'GPE', 'ORG', 'PER']
         elif args.data_dir.find('scierc')!=-1:
             self.ner_label_list = ['NIL', 'Method', 'OtherScientificTerm', 'Task', 'Generic', 'Material', 'Metric']
+        elif args.data_dir.find('radgraph')!=-1:
+            self.ner_label_list = ['NIL', 'ANAT-DP','OBS-DP','OBS-U','OBS-DA', 'CHAN-NC', 'CHAN-IMP', 'CHAN-WOR', 'CHAN-AP', 'CHAN-DISA', 'CHAN-DISP']
         else:
             self.ner_label_list = ['NIL', 'CARDINAL', 'DATE', 'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'MONEY', 'NORP', 'ORDINAL', 'ORG', 'PERCENT', 'PERSON', 'PRODUCT', 'QUANTITY', 'TIME', 'WORK_OF_ART']
 
@@ -942,6 +944,8 @@ def main():
         num_labels = 7
     elif args.data_dir.find('ontonotes')!=-1:
         num_labels = 19
+    elif args.data_dir.find('radgraph')!=-1:
+        num_labels = 11
     else:
         assert (False)
 
